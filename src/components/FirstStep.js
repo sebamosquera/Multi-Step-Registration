@@ -35,7 +35,24 @@ const FirstStep = (props) => {
         </Form.Group>
 
         <Form.Group controlId='last_name'>
-
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type='text'
+            name='last_name'
+            placeholder='Enter your last name'
+            autoComplete='off'
+            ref={register({
+              required: 'Last name is required.',
+              pattern: {
+                value: /^[a-zA-Z]+$/,
+                message: 'Last name should contain only characters.'
+              }
+            })}
+            className={`${errors.last_name ? 'input-error' : ""}`}
+          />
+          {errors.last_name && (
+            <p className='errorMsg'>{errors.last_name.message}</p>
+          )}
         </Form.Group>
 
         <Button variant='primary' type='submit'>
