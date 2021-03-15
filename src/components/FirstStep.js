@@ -8,6 +8,7 @@ const FirstStep = (props) => {
 
   const onSubmit = (data) => {
     console.log(data);
+    props.history.push('/second'); // for the push method of history, we've provided the route to which we need to redirect
   };
 
   return (
