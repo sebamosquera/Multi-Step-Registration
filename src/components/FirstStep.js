@@ -4,10 +4,16 @@ import { Form, Button } from 'react-bootstrap';
 
 const FirstStep = (props) => {
 
-  const { register, handleSubmit, errors } = useForm();
+  const { user } = props;
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name 
+    }
+  });
 
   const onSubmit = (data) => {
-    console.log(data);
+    props.updateUser(data);
     props.history.push('/second'); // for the push method of history, we've provided the route to which we need to redirect
   };
 
