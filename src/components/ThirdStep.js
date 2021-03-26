@@ -86,6 +86,27 @@ const ThirdStep = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+      const { user } = props;
+      const updateData = {
+        country: countries.find(
+          (country) => country.isoCode === selectedCountry
+        )?.name,
+        state:
+          states.find((state) => state.isoCode === selectedState)?.name || '',
+        city: selectedCity
+      };
+
+      await axios.post(`${BASE_API_URL}/register`, {
+        ...user,
+        ...updateData
+      });
+    } catch (error) {
+      if (error.response) {
+        console.log('error', error.response.data);
+      }
+    }
   };
 
   return (
