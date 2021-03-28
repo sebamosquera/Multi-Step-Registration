@@ -127,12 +127,8 @@ const ThirdStep = (props) => {
 
   return (
     <Form className='input-form' onSubmit={handleSubmit}>
-      <motion.div
-        className='col-md-6 offset-md-3'
-        initial={{ x: '-100vw' }}
-        animate={{ x: 0 }}
-        transition={{ stiffness: 150}}
-      >
+      <motion.div className='col-md-6 offset-md-3' initial={{ x: '-100vw' }} animate={{ x: 0 }} transition={{ stiffness: 150}}>
+
         <Form.Group controlId='country'>
           {isLoading && (
             <p className='loading'>Loading countries. Please wait...</p>

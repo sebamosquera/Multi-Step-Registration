@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import FirstStep from '../components/FirstStep';
 import SecondStep from '../components/SecondStep';
 import ThirdStep from '../components/ThirdStep';
@@ -11,11 +11,11 @@ const AppRouter = () => {
   const [ user, setUser ] = useState({});
 
   const updateUser = (data) => {
-    setUser((prevUser) => ({ ...prevUser, ...data}));
+    setUser((prevUser) => ({ ...prevUser, ...data }));
   };
 
   const resetUser = () => {
-    setUser([]);
+    setUser({});
   };
 
   return (
@@ -37,12 +37,13 @@ const AppRouter = () => {
             path='/second'
           />
           <Route
-            render={(props) => {
-              <ThirdStep {...props} user={user} resetUser={resetUser}/>
-            }}
+            render={(props) => (
+              <ThirdStep {...props} user={user} resetUser={resetUser} />
+            )}
             path='/third'
           />
           <Route component={Login} path='/login' />
+          <Route render={() => <Redirect to='/' />} />
         </Switch>
       </div>
     </BrowserRouter>
