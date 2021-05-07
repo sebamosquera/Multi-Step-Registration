@@ -1,1 +1,1 @@
-Tutorial de youtube. Este codigo no me pertenece
+Tutorial de youtube. Este código no me pertenece
